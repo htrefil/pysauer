@@ -1,0 +1,5 @@
+# ENet communication channels.
+
+CHANNEL_POSITIONS = 0
+CHANNEL_MESSAGES = 1
+CHANNEL_FILES = 2
