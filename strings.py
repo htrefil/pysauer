@@ -45,10 +45,10 @@ def encode_char(c: str):
 	try:
 		return U2C_TABLE[ord(c)]
 	except KeyError:
-		raise EncodeError('Unencodable character: \'' + c '\'')
+		raise EncodeError('Unencodable character: \'' + c + '\'')
 
 def decode_char(c: int):
 	try:
 		return C2U_TABLE[c]
 	except KeyError:
-		raise EncodeError('Undecodable character: \'' + str(c) '\'')
+		raise EncodeError('Undecodable character: \'' + str(c) + '\'')
