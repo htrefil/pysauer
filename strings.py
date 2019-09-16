@@ -51,4 +51,4 @@ def decode_char(c: int):
 	try:
 		return C2U_TABLE[c]
 	except KeyError:
-		raise EncodeError('Undecodable character: \'' + str(c) + '\'')
+		raise EncodeError('Undecodable character: ' + str(c))
