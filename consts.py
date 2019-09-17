@@ -1,7 +1,6 @@
 # Version of the protocol that this library targets.
 PROTOCOL_VERSION = 259
 
-
 # ENet communication channels.
 CHANNEL_POSITIONS = 0
 CHANNEL_MESSAGES = 1
