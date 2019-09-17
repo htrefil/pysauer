@@ -12,9 +12,10 @@ class Writer:
 		self.write_byte(1 if b else 0)
 
 	def write_int32(self, n: int):
-		if n >= -0x80 and n <= 0x7F:
-			self.write_byte(n & 0xFF)
-		elif n >= -0x7FFF and n <= 0x7FFF:
+		n &= 0xFFFFFFFF
+		if n < 0x80 or (n > 0x81 and n <= 0xFF):
+			self.write_byte(n)
+		elif n <= 0xFFFF:
 			self.write_byte(0x80)
 			self.write_byte(n & 0xFF)
 			self.write_byte((n >> 8) & 0xFF)
@@ -23,7 +24,7 @@ class Writer:
 			self.write_byte(n & 0xFF)
 			self.write_byte((n >> 8) & 0xFF)
 			self.write_byte((n >> 16) & 0xFF)
-			self.write_byte((n >> 28) & 0xFF)
+			self.write_byte((n >> 24) & 0xFF)
 
 	def write_uint32(self, n: int):
 		if n < 1 << 7:
