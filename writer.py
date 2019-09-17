@@ -9,7 +9,7 @@ class Writer:
 		self.data.append(n)
 
 	def write_bool(self, b: bool):
-		self.write_byt(1 if b else 0)
+		self.write_byte(1 if b else 0)
 
 	def write_int32(self, n: int):
 		if n >= -0x80 and n <= 0x7F:
