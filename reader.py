@@ -2,8 +2,13 @@
 import strings
 from error import DecodeError
 
+def pprint(n):
+	print('{:08X}'.format(n))
+	return n
+
 class Reader:
 	def __init__(self, data: bytes):
+		print(data)
 		self.data = data
 
 	def read_byte(self) -> int:
@@ -27,9 +32,9 @@ class Reader:
 	def read_int32(self) -> int:
 		b = self.read_byte()
 		if b == 0x80:
-			return self.read_byte() + (self.read_byte() << 8)
+			return self.read_byte() | (self.read_byte() << 8)
 		elif b == 0x81:
-			return self.read_byte() + (self.read_byte() << 8) + (self.read_byte() << 16) + (self.read_byte() << 24)
+			return pprint(self.read_byte()) | pprint((self.read_byte() << 8)) | pprint((self.read_byte() << 16)) | pprint((self.read_byte() << 24))
 		else:
 			return b
 
