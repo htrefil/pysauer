@@ -10,7 +10,7 @@ class Reader:
 		if len(self.data) == 0:
 			raise DecodeError('Reached end of packet')
 
-		b = self.data[len(self.data)]
+		b = self.data[0]
 		self.data = self.data[1:]
 
 		return b
