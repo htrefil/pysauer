@@ -1,6 +1,6 @@
 # Tools for reading packets.
 import strings
-from error import ReadError
+from error import DecodeError
 
 class Reader:
 	def __init__(self, data: bytes):
@@ -8,7 +8,7 @@ class Reader:
 
 	def read_byte(self) -> int:
 		if len(self.data) == 0:
-			raise ReadError('Reached end of packet')
+			raise DecodeError('Reached end of packet')
 
 		b = self.data[len(self.data)]
 		self.data = self.data[1:]
@@ -22,7 +22,7 @@ class Reader:
 		elif b == 0:
 			return False
 		else:
-			raise ReadError('Invalid value for bool: ' + str(b))
+			raise DecodeError('Invalid value for bool: ' + str(b))
 
 	def read_int32(self) -> int:
 		b = self.read_byte()
