@@ -21,7 +21,7 @@ class Reader:
 			return True
 		elif b == 0:
 			return False
-		elif:
+		else:
 			raise ReadError('Invalid value for bool: ' + str(b))
 
 	def read_int32(self) -> int:
