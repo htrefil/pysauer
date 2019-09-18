@@ -29,7 +29,10 @@ class Reader:
 		if b == 0x80:
 			return self.read_byte() | (self.read_byte() << 8)
 		elif b == 0x81:
-			return self.read_byte() | (self.read_byte() << 8) | (self.read_byte() << 16) | (self.read_byte() << 24)
+			n = self.read_byte() | (self.read_byte() << 8) | (self.read_byte() << 16) | (self.read_byte() << 24)
+			if n & 1 << 31 != 0:
+				n = -((~n + 1) & 0xFFFFFFFF)
+			return n
 		else:
 			return b
 
