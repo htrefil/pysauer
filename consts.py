@@ -6,7 +6,7 @@ CHANNEL_POSITIONS = 0
 CHANNEL_MESSAGES = 1
 CHANNEL_FILES = 2
 
-MAX_CHANNELS = 2
+MAX_CHANNELS = 3
 
 # Reasons why a client was disconnected.
 DISCONNECT_NORMAL = 0
