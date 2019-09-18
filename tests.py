@@ -1,6 +1,7 @@
 import unittest
 from writer import Writer
 from reader import Reader
+import strings
 
 class TestIntegers(unittest.TestCase):
 	def test_int32(self):
@@ -24,6 +25,15 @@ class TestIntegers(unittest.TestCase):
 		reader = Reader(writer.data)
 		for n in NUMBERS:
 			self.assertEqual(reader.read_uint32(), n)
+
+class TestString(unittest.TestCase):
+	def test_string(self):
+		DATA = ''.join([chr(u) for u, _ in strings.U2C_TABLE.items()])
+
+		writer = Writer()
+		writer.write_string(DATA)
+
+		self.assertEqual(Reader(writer.data).read_string(), DATA)
 
 if __name__ == '__main__':
 	unittest.main()
