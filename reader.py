@@ -60,5 +60,5 @@ class Reader:
 			if n == 0:
 				return s
 
-			s += strings.decode_char(n)
+			s += chr(strings.decode_char(n))
 		
