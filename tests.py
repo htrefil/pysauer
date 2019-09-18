@@ -35,5 +35,18 @@ class TestString(unittest.TestCase):
 
 		self.assertEqual(Reader(writer.data).read_string(), DATA)
 
+
+class TestBool(unittest.TestCase):
+	def test_bool(self):
+		ITEMS = [True, False]
+
+		writer = Writer()
+		for b in ITEMS:
+			writer.write_bool(b)
+
+		reader = Reader(writer.data)
+		for b in ITEMS:
+			self.assertEqual(reader.read_bool(), b)
+
 if __name__ == '__main__':
 	unittest.main()
