@@ -45,4 +45,6 @@ class Writer:
 	def write_string(self, s: str):
 		for c in s:
 			self.write_int32(strings.encode_char(c))
+		
+		self.write_int32(0)
 
